@@ -1,0 +1,140 @@
+!GDT.IO.Implementation.GraphDocument,%2520GDT,%2520Version=0.0.1.0,%2520Culture=neutral,%2520PublicKeyToken=null
+id: c4b9b27c-5ccc-4b3b-a545-2fdd4e3748b9
+layers:
+  - id: 30b3ea9a-bdfd-4a79-a1f7-4aab75305efd
+    name: WfcNeighborLayer
+    relations:
+      - id: 323be064-a5fe-4681-95c1-2db127a3988e
+        name: Connection from 0 to 1
+        properties: []
+        referenced_entities:
+          - 4fffdd29-7806-4c10-b1bf-813a7f2b69f6
+          - 382af526-00ff-4f6f-a4b8-d3e57da455ab
+      - id: 38cff371-be72-483c-bbc3-36e7e6618bc9
+        name: Connection from 1 to 2
+        properties: []
+        referenced_entities:
+          - 382af526-00ff-4f6f-a4b8-d3e57da455ab
+          - ed45ad80-3130-465b-af3c-a3dcea92440c
+      - id: 536b4624-faf4-4e49-ac26-26a12113947f
+        name: Connection from 2 to 3
+        properties: []
+        referenced_entities:
+          - ed45ad80-3130-465b-af3c-a3dcea92440c
+          - 573743eb-c385-44c2-8515-e64eb93cb7e8
+      - id: de575a8b-85c3-407f-bf4d-aaa78e8f696f
+        name: Connection from 3 to 4
+        properties: []
+        referenced_entities:
+          - 573743eb-c385-44c2-8515-e64eb93cb7e8
+          - 8f596538-452b-41e8-8e2e-efe61c952fcd
+      - id: 948d183d-193f-4b33-8a24-4b5db5918476
+        name: Connection from 4 to 5
+        properties: []
+        referenced_entities:
+          - 8f596538-452b-41e8-8e2e-efe61c952fcd
+          - 3042daf4-7f5b-4c50-8d35-a640dbb60807
+      - id: f0b110f4-2e55-480c-8e04-9149c24e28c9
+        name: Connection from 5 to 0
+        properties: []
+        referenced_entities:
+          - 3042daf4-7f5b-4c50-8d35-a640dbb60807
+          - 4fffdd29-7806-4c10-b1bf-813a7f2b69f6
+      - id: aa3d435e-a82e-4d7c-831e-c764e3b96f21
+        name: Connection from 6 to 7
+        properties: []
+        referenced_entities:
+          - d2cfe1d3-96a9-4b75-8f36-03833483bd78
+          - b161d691-b886-4ef7-925a-ae38a654d763
+      - id: c0a73466-d4cb-49c7-a418-080939de49d9
+        name: Connection from 7 to 8
+        properties: []
+        referenced_entities:
+          - b161d691-b886-4ef7-925a-ae38a654d763
+          - aa0f418d-492c-4351-9648-f6245dd97cb7
+      - id: 88c483fd-5451-467a-b9a8-7527b3223d0c
+        name: Connection from 8 to 9
+        properties: []
+        referenced_entities:
+          - aa0f418d-492c-4351-9648-f6245dd97cb7
+          - 60625bd8-d556-4327-bbde-6db431438490
+      - id: b4ffdd88-9272-45ee-9398-1e6b3c5f5efb
+        name: Connection from 9 to 10
+        properties: []
+        referenced_entities:
+          - 60625bd8-d556-4327-bbde-6db431438490
+          - 42fc0efb-d3f0-47a8-a6d6-1d90fdcfa05c
+      - id: de56f3c5-a2df-4596-b554-e27c62eddbac
+        name: Connection from 10 to 11
+        properties: []
+        referenced_entities:
+          - 42fc0efb-d3f0-47a8-a6d6-1d90fdcfa05c
+          - b6685691-84f8-41d5-96a2-4bbe46e4ea8e
+      - id: 08e59ac7-e8df-49e0-992e-e1cba5aeb11c
+        name: Connection from 11 to 6
+        properties: []
+        referenced_entities:
+          - b6685691-84f8-41d5-96a2-4bbe46e4ea8e
+          - d2cfe1d3-96a9-4b75-8f36-03833483bd78
+      - id: a9eca666-4838-4924-afb6-dbafd0b03682
+        name: Connection from 5 to 11
+        properties: []
+        referenced_entities:
+          - 3042daf4-7f5b-4c50-8d35-a640dbb60807
+          - b6685691-84f8-41d5-96a2-4bbe46e4ea8e
+      - id: 88a77df7-bfc8-4cf3-8449-35b1bde4efbc
+        name: Connection from 2 to 8
+        properties: []
+        referenced_entities:
+          - ed45ad80-3130-465b-af3c-a3dcea92440c
+          - aa0f418d-492c-4351-9648-f6245dd97cb7
+name: Connected Rings Graph (o=o)
+entities:
+  - children: []
+    components: []
+    id: 4fffdd29-7806-4c10-b1bf-813a7f2b69f6
+    name: Location 0
+  - children: []
+    components: []
+    id: 382af526-00ff-4f6f-a4b8-d3e57da455ab
+    name: Location 1
+  - children: []
+    components: []
+    id: ed45ad80-3130-465b-af3c-a3dcea92440c
+    name: Location 2
+  - children: []
+    components: []
+    id: 573743eb-c385-44c2-8515-e64eb93cb7e8
+    name: Location 3
+  - children: []
+    components: []
+    id: 8f596538-452b-41e8-8e2e-efe61c952fcd
+    name: Location 4
+  - children: []
+    components: []
+    id: 3042daf4-7f5b-4c50-8d35-a640dbb60807
+    name: Location 5
+  - children: []
+    components: []
+    id: d2cfe1d3-96a9-4b75-8f36-03833483bd78
+    name: Location 6
+  - children: []
+    components: []
+    id: b161d691-b886-4ef7-925a-ae38a654d763
+    name: Location 7
+  - children: []
+    components: []
+    id: aa0f418d-492c-4351-9648-f6245dd97cb7
+    name: Location 8
+  - children: []
+    components: []
+    id: 60625bd8-d556-4327-bbde-6db431438490
+    name: Location 9
+  - children: []
+    components: []
+    id: 42fc0efb-d3f0-47a8-a6d6-1d90fdcfa05c
+    name: Location 10
+  - children: []
+    components: []
+    id: b6685691-84f8-41d5-96a2-4bbe46e4ea8e
+    name: Location 11

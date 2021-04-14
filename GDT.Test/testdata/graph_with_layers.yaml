@@ -1,0 +1,83 @@
+﻿id: 67003510-69f4-4495-905c-f368c4e0ee0f
+name: LocationGraph
+entities:
+    - id: 023ac124-c155-245f-d2e4-2a3f024ed820
+      name: Eastern Kingdoms
+      children:
+          - id: 949737bf-0098-49b7-9833-0bfb586375fd
+            name: Stormwind
+            components:
+              - id: 949737bf-0098-49b7-9833-0bfb586572fe
+                name: City
+                attributes:
+                  - name: Population
+                    type_name: Int32
+                    value: 200000
+                  - name: LevelRange
+                    type_name: System.String
+                    value: 1-60
+                  - name: Affiliation
+                    type_name: System.String
+                    value: Alliance
+          - id: 8c911cf8-c151-442f-a9e1-2a7f024ea681
+            name: Undercity
+            components:
+              - id: 641737bf-0098-39b7-8582-2bfb586572fe
+                name: City
+                attributes:
+                  - name: Population
+                    type_name: Int32
+                    value: 13000
+                  - name: LevelRange
+                    type_name: System.String
+                    value: 1-60
+                  - name: Affiliation
+                    type_name: System.String
+                    value: Horde
+    - id: 1c511cf8-c252-562f-a1e3-1c7f024ed682
+      name: Kalimdor
+      children:
+          - id: 3af87a1a-43f9-45b6-a2d5-ec1eb8fad02b
+            name: Orgrimmar
+            components:
+              - id: 249737bf-5123-69b7-5582-4bfb586572fe
+                name: City
+                attributes:
+                  - name: Population
+                    type_name: Int32
+                    value: 14000
+                  - name: LevelRange
+                    type_name: System.String
+                    value: 1-60
+                  - name: Affiliation
+                    type_name: System.String
+                    value: Horde
+          - id: e9753ebf-e310-46b9-b416-104b4f2d4520
+            name: Thunder Bluff
+            components:
+              - id: 625721ea-2571-29b7-4282-1ac2d1657211
+                name: City
+                attributes:
+                  - name: Population
+                    type_name: Int32
+                    value: 6000
+                  - name: LevelRange
+                    type_name: System.String
+                    value: 1-60
+                  - name: Affiliation
+                    type_name: System.String
+                    value: Horde
+layers:
+    - id: 6b47df6a-6538-493d-a06d-61b215cc48ba
+      name: Zeppelin Connections
+      relations:
+          - id: 6b47df6a-6538-493d-a06d-61b215cc48b1
+            name: OG-UC
+            referenced_entities:
+                - 3af87a1a-43f9-45b6-a2d5-ec1eb8fad02b
+                - 8c911cf8-c151-442f-a9e1-2a7f024ea681
+          - id: 5b47df6a-3521-923d-a06d-61b215cc48b2
+            name: OG-TB
+            referenced_entities:
+                - 3af87a1a-43f9-45b6-a2d5-ec1eb8fad02b
+                - e9753ebf-e310-46b9-b416-104b4f2d4520

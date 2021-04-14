@@ -1,0 +1,456 @@
+!GDT.IO.Implementation.GraphDocument,%2520GDT,%2520Version=0.0.1.0,%2520Culture=neutral,%2520PublicKeyToken=null
+id: ba609c0c-ee4e-46e3-9715-62edbadbdf92
+layers:
+  - id: bb88ce09-b450-463b-8273-835be38a9ce5
+    name: WfcNeighborLayer
+    relations:
+      - id: dbb1300f-c86b-4540-80d3-87f9b8e281d3
+        name: Connection from 0 to 1
+        properties: []
+        referenced_entities:
+          - d9e5027a-8787-453f-b5c0-df9124372d79
+          - 93598860-091c-40fd-bc46-ff5151f1ccba
+      - id: fdbeb45a-1040-40d3-ab0c-dd2868946461
+        name: Connection from 1 to 2
+        properties: []
+        referenced_entities:
+          - 93598860-091c-40fd-bc46-ff5151f1ccba
+          - 67ad2498-b3c5-428a-8724-b9b8a71fbced
+      - id: ffc5ce9d-f253-4f38-bf8e-f9516d132e2a
+        name: Connection from 2 to 3
+        properties: []
+        referenced_entities:
+          - 67ad2498-b3c5-428a-8724-b9b8a71fbced
+          - 8b9b37c3-0642-468a-8b8b-37b50967783f
+      - id: 62a990bf-13ea-4102-a168-4c24e5cfa064
+        name: Connection from 3 to 4
+        properties: []
+        referenced_entities:
+          - 8b9b37c3-0642-468a-8b8b-37b50967783f
+          - 2d9488b3-6b33-4c94-86d5-f0fb4e8c21cc
+      - id: 706c140c-8179-483b-b55b-e1d5f53565a6
+        name: Connection from 4 to 5
+        properties: []
+        referenced_entities:
+          - 2d9488b3-6b33-4c94-86d5-f0fb4e8c21cc
+          - b9b56976-4047-4ca7-874d-930dfef0f1e4
+      - id: eb7833a7-69e9-4c68-9694-c964df6d2d7a
+        name: Connection from 5 to 6
+        properties: []
+        referenced_entities:
+          - b9b56976-4047-4ca7-874d-930dfef0f1e4
+          - 3a94fb21-9ba1-4a71-9f80-3cb387c0a5b9
+      - id: 154d7988-f684-4858-93de-d905065fe232
+        name: Connection from 6 to 7
+        properties: []
+        referenced_entities:
+          - 3a94fb21-9ba1-4a71-9f80-3cb387c0a5b9
+          - 9405f415-5076-4d3d-85af-b5511a2f2430
+      - id: 8ec88186-79ce-4f0a-b3a3-4ef3b98117c8
+        name: Connection from 7 to 8
+        properties: []
+        referenced_entities:
+          - 9405f415-5076-4d3d-85af-b5511a2f2430
+          - 3892690d-9b31-4668-b1e7-99dce173a3ad
+      - id: 5cdba71b-3659-4005-8785-df42d5913680
+        name: Connection from 8 to 9
+        properties: []
+        referenced_entities:
+          - 3892690d-9b31-4668-b1e7-99dce173a3ad
+          - ef793680-ec45-4094-8e33-ffe02d4b08b8
+      - id: b66e4440-558a-4313-9f4f-7aa9466ea512
+        name: Connection from 9 to 10
+        properties: []
+        referenced_entities:
+          - ef793680-ec45-4094-8e33-ffe02d4b08b8
+          - 26d4ac80-c014-4b24-871b-48d52003ed56
+      - id: 5b2fed48-fc10-4982-8d73-adc960722727
+        name: Connection from 10 to 11
+        properties: []
+        referenced_entities:
+          - 26d4ac80-c014-4b24-871b-48d52003ed56
+          - 78f85145-df52-40fb-b6c3-2b0a1bd8d9cf
+      - id: cf85e1d0-939f-402d-af30-dd4d14214f72
+        name: Connection from 11 to 12
+        properties: []
+        referenced_entities:
+          - 78f85145-df52-40fb-b6c3-2b0a1bd8d9cf
+          - 889f908d-2b87-4ef0-9631-8a7ca88c4c26
+      - id: 1f8b6a9c-e0c4-4e14-af01-587b481a0daa
+        name: Connection from 12 to 13
+        properties: []
+        referenced_entities:
+          - 889f908d-2b87-4ef0-9631-8a7ca88c4c26
+          - 718f68fd-ffa2-4931-9fae-26c7e04dac57
+      - id: 4b48ed04-f9b1-4f5c-937e-00f2db163dcd
+        name: Connection from 13 to 14
+        properties: []
+        referenced_entities:
+          - 718f68fd-ffa2-4931-9fae-26c7e04dac57
+          - 06f1448b-8e0b-4038-bf19-f9cd683f83ab
+      - id: 6a437024-c57d-41d3-a4ee-c9be4eaa7a24
+        name: Connection from 14 to 15
+        properties: []
+        referenced_entities:
+          - 06f1448b-8e0b-4038-bf19-f9cd683f83ab
+          - f2ab52d7-757b-407c-a3b1-9f40ff09fd4c
+      - id: 6c252dc3-e07f-4922-9129-d3adc748d773
+        name: Connection from 15 to 16
+        properties: []
+        referenced_entities:
+          - f2ab52d7-757b-407c-a3b1-9f40ff09fd4c
+          - 5a2fe225-cbdb-4002-a5e0-2e97f70f1318
+      - id: 37257250-deeb-4110-8571-44650110f427
+        name: Connection from 16 to 17
+        properties: []
+        referenced_entities:
+          - 5a2fe225-cbdb-4002-a5e0-2e97f70f1318
+          - 82239136-6758-4de9-ab76-7458543bc79e
+      - id: e8b072df-d86f-4e02-8678-43e5701d6f13
+        name: Connection from 17 to 18
+        properties: []
+        referenced_entities:
+          - 82239136-6758-4de9-ab76-7458543bc79e
+          - 5b0edd17-dfe0-45b3-ac57-b83393e77c7e
+      - id: 38ceb008-a124-4f93-ae38-07ad65adf892
+        name: Connection from 18 to 19
+        properties: []
+        referenced_entities:
+          - 5b0edd17-dfe0-45b3-ac57-b83393e77c7e
+          - 75b9a2fd-1f5f-429f-9e43-ebeb212475cb
+      - id: d062c655-0af3-40d9-b224-3dea5f8b34a1
+        name: Connection from 19 to 20
+        properties: []
+        referenced_entities:
+          - 75b9a2fd-1f5f-429f-9e43-ebeb212475cb
+          - 42ac90f5-ca52-4107-8ce0-1abb33b6cee3
+      - id: 5ebd67fe-c3a5-4474-b105-385f394c969c
+        name: Connection from 20 to 21
+        properties: []
+        referenced_entities:
+          - 42ac90f5-ca52-4107-8ce0-1abb33b6cee3
+          - 7dd3c44f-7a97-4fc1-8156-2d8e184149c8
+      - id: 6d1ab787-540b-4886-bb07-f5fb588dd343
+        name: Connection from 21 to 22
+        properties: []
+        referenced_entities:
+          - 7dd3c44f-7a97-4fc1-8156-2d8e184149c8
+          - 8e5900cf-f7d1-4d2c-8a6b-e2892fd07614
+      - id: 63f9690e-3fad-4e12-92e9-7a3744ab86e9
+        name: Connection from 22 to 23
+        properties: []
+        referenced_entities:
+          - 8e5900cf-f7d1-4d2c-8a6b-e2892fd07614
+          - 8342c8f8-91ab-4dc4-8324-1049dd1e9651
+      - id: ca3a9309-ddb9-4f9a-b93a-2e954bac9667
+        name: Connection from 23 to 24
+        properties: []
+        referenced_entities:
+          - 8342c8f8-91ab-4dc4-8324-1049dd1e9651
+          - c24e677d-1301-4c1f-9a86-1b353fdc46f1
+      - id: e0e4a228-405b-43ae-b024-f8e3b25b219e
+        name: Connection from 24 to 25
+        properties: []
+        referenced_entities:
+          - c24e677d-1301-4c1f-9a86-1b353fdc46f1
+          - cac0a3f3-8baa-4a54-a52f-ee868ee11d30
+      - id: ec49b615-387c-4a65-b1ee-387aaad93015
+        name: Connection from 25 to 26
+        properties: []
+        referenced_entities:
+          - cac0a3f3-8baa-4a54-a52f-ee868ee11d30
+          - 46158085-a055-4bb9-b84b-ce200906b089
+      - id: 2071d392-6299-4995-b020-551099895f30
+        name: Connection from 26 to 27
+        properties: []
+        referenced_entities:
+          - 46158085-a055-4bb9-b84b-ce200906b089
+          - e2301db6-ea2e-4bc4-adbe-af5221275643
+      - id: db792883-6646-4378-99b9-ed39e1ef6d82
+        name: Connection from 27 to 28
+        properties: []
+        referenced_entities:
+          - e2301db6-ea2e-4bc4-adbe-af5221275643
+          - b443a7e7-fe21-4ac5-80ea-85c4facdb21b
+      - id: c8c90e4d-acb1-4d65-a1f6-3b05bff5d318
+        name: Connection from 28 to 29
+        properties: []
+        referenced_entities:
+          - b443a7e7-fe21-4ac5-80ea-85c4facdb21b
+          - 939d37f5-0187-4ffb-98fd-0dc11c4eaab4
+      - id: 4f8b4a2c-043e-42ba-b1e9-d2be75b8617c
+        name: Connection from 29 to 30
+        properties: []
+        referenced_entities:
+          - 939d37f5-0187-4ffb-98fd-0dc11c4eaab4
+          - 214d1743-61e0-4b75-b35e-9178132176b0
+      - id: 16555654-3fd6-4e76-b2d5-97919bd793e3
+        name: Connection from 30 to 31
+        properties: []
+        referenced_entities:
+          - 214d1743-61e0-4b75-b35e-9178132176b0
+          - 92bf385a-7672-4a72-b0e9-ce80e55daa2f
+      - id: 44d2ee9e-ab6a-4ca0-91e7-446b17eaa731
+        name: Connection from 31 to 0
+        properties: []
+        referenced_entities:
+          - 92bf385a-7672-4a72-b0e9-ce80e55daa2f
+          - d9e5027a-8787-453f-b5c0-df9124372d79
+      - id: bddefd44-8f73-4313-85dc-c82ff84bfd7c
+        name: Connection from 2 to 32
+        properties: []
+        referenced_entities:
+          - 67ad2498-b3c5-428a-8724-b9b8a71fbced
+          - c9f2cb57-9076-436e-a9d4-cba3bcc1217a
+      - id: 91c6ccf4-d47c-4420-96ba-abc368580cd8
+        name: Connection from 32 to 33
+        properties: []
+        referenced_entities:
+          - c9f2cb57-9076-436e-a9d4-cba3bcc1217a
+          - 18d3bede-7042-424a-a1bb-d5cef5607c0e
+      - id: c7b21564-9eff-43cf-956f-62c0accc3ca9
+        name: Connection from 33 to 34
+        properties: []
+        referenced_entities:
+          - 18d3bede-7042-424a-a1bb-d5cef5607c0e
+          - 52fcc1c1-1616-468d-9c06-5d14c61a5a7d
+      - id: 5d6ef525-fdf9-46a5-ad5e-25f5ecc472ec
+        name: Connection from 34 to 35
+        properties: []
+        referenced_entities:
+          - 52fcc1c1-1616-468d-9c06-5d14c61a5a7d
+          - 70ab7ca3-5180-4e0f-97da-ac879838cba0
+      - id: 8433dd76-c12d-4e99-8b43-13088864dda3
+        name: Connection from 10 to 36
+        properties: []
+        referenced_entities:
+          - 26d4ac80-c014-4b24-871b-48d52003ed56
+          - 99c31f64-d186-45e1-96ec-57a913c9c966
+      - id: 63abcc36-f097-42c7-9c35-966b8a06ed39
+        name: Connection from 36 to 37
+        properties: []
+        referenced_entities:
+          - 99c31f64-d186-45e1-96ec-57a913c9c966
+          - c2f8d624-93c0-481c-a8c6-467ff74aef9b
+      - id: e96ee832-8078-4e56-980e-e892bc6658c7
+        name: Connection from 37 to 38
+        properties: []
+        referenced_entities:
+          - c2f8d624-93c0-481c-a8c6-467ff74aef9b
+          - e1e34ccd-c386-47ca-b694-27f1c098475a
+      - id: c4070189-7f67-4811-b4d4-e0fc2fedde69
+        name: Connection from 10 to 39
+        properties: []
+        referenced_entities:
+          - 26d4ac80-c014-4b24-871b-48d52003ed56
+          - ebb666d0-a340-403e-916d-f295ef6f8c8e
+      - id: e495696a-c652-4e17-80af-12bea3d4e2fa
+        name: Connection from 39 to 20
+        properties: []
+        referenced_entities:
+          - ebb666d0-a340-403e-916d-f295ef6f8c8e
+          - 42ac90f5-ca52-4107-8ce0-1abb33b6cee3
+      - id: 3808b018-a0df-4855-abba-bbd24b8886e0
+        name: Connection from 20 to 40
+        properties: []
+        referenced_entities:
+          - 42ac90f5-ca52-4107-8ce0-1abb33b6cee3
+          - 0175cc93-b9f7-47bb-a08f-f15de9df1bb9
+      - id: d3c61b8d-cd6a-4b81-afea-4333f187eabb
+        name: Connection from 40 to 14
+        properties: []
+        referenced_entities:
+          - 0175cc93-b9f7-47bb-a08f-f15de9df1bb9
+          - 06f1448b-8e0b-4038-bf19-f9cd683f83ab
+      - id: 68963c40-7d64-43e7-808d-61aafb13f8ad
+        name: Connection from 26 to 41
+        properties: []
+        referenced_entities:
+          - 46158085-a055-4bb9-b84b-ce200906b089
+          - d48f82ec-0ec7-43b6-aac9-5caa07d7e79d
+      - id: 1d2a1f07-eaa1-4c3f-a9e0-9130b3b68480
+        name: Connection from 41 to 42
+        properties: []
+        referenced_entities:
+          - d48f82ec-0ec7-43b6-aac9-5caa07d7e79d
+          - 49c5e46b-0055-4ad3-bf5f-144dd675b0d5
+      - id: 8f03e209-86b0-4160-bf13-c261d1698fe1
+        name: Connection from 42 to 16
+        properties: []
+        referenced_entities:
+          - 49c5e46b-0055-4ad3-bf5f-144dd675b0d5
+          - 5a2fe225-cbdb-4002-a5e0-2e97f70f1318
+name: Pokemon Region Graph
+entities:
+  - children: []
+    components: []
+    id: d9e5027a-8787-453f-b5c0-df9124372d79
+    name: Location 0
+  - children: []
+    components: []
+    id: 93598860-091c-40fd-bc46-ff5151f1ccba
+    name: Location 1
+  - children: []
+    components: []
+    id: 67ad2498-b3c5-428a-8724-b9b8a71fbced
+    name: Location 2
+  - children: []
+    components: []
+    id: 8b9b37c3-0642-468a-8b8b-37b50967783f
+    name: Location 3
+  - children: []
+    components: []
+    id: 2d9488b3-6b33-4c94-86d5-f0fb4e8c21cc
+    name: Location 4
+  - children: []
+    components: []
+    id: b9b56976-4047-4ca7-874d-930dfef0f1e4
+    name: Location 5
+  - children: []
+    components: []
+    id: 3a94fb21-9ba1-4a71-9f80-3cb387c0a5b9
+    name: Location 6
+  - children: []
+    components: []
+    id: 9405f415-5076-4d3d-85af-b5511a2f2430
+    name: Location 7
+  - children: []
+    components: []
+    id: 3892690d-9b31-4668-b1e7-99dce173a3ad
+    name: Location 8
+  - children: []
+    components: []
+    id: ef793680-ec45-4094-8e33-ffe02d4b08b8
+    name: Location 9
+  - children: []
+    components: []
+    id: 26d4ac80-c014-4b24-871b-48d52003ed56
+    name: Location 10
+  - children: []
+    components: []
+    id: 78f85145-df52-40fb-b6c3-2b0a1bd8d9cf
+    name: Location 11
+  - children: []
+    components: []
+    id: 889f908d-2b87-4ef0-9631-8a7ca88c4c26
+    name: Location 12
+  - children: []
+    components: []
+    id: 718f68fd-ffa2-4931-9fae-26c7e04dac57
+    name: Location 13
+  - children: []
+    components: []
+    id: 06f1448b-8e0b-4038-bf19-f9cd683f83ab
+    name: Location 14
+  - children: []
+    components: []
+    id: f2ab52d7-757b-407c-a3b1-9f40ff09fd4c
+    name: Location 15
+  - children: []
+    components: []
+    id: 5a2fe225-cbdb-4002-a5e0-2e97f70f1318
+    name: Location 16
+  - children: []
+    components: []
+    id: 82239136-6758-4de9-ab76-7458543bc79e
+    name: Location 17
+  - children: []
+    components: []
+    id: 5b0edd17-dfe0-45b3-ac57-b83393e77c7e
+    name: Location 18
+  - children: []
+    components: []
+    id: 75b9a2fd-1f5f-429f-9e43-ebeb212475cb
+    name: Location 19
+  - children: []
+    components: []
+    id: 42ac90f5-ca52-4107-8ce0-1abb33b6cee3
+    name: Location 20
+  - children: []
+    components: []
+    id: 7dd3c44f-7a97-4fc1-8156-2d8e184149c8
+    name: Location 21
+  - children: []
+    components: []
+    id: 8e5900cf-f7d1-4d2c-8a6b-e2892fd07614
+    name: Location 22
+  - children: []
+    components: []
+    id: 8342c8f8-91ab-4dc4-8324-1049dd1e9651
+    name: Location 23
+  - children: []
+    components: []
+    id: c24e677d-1301-4c1f-9a86-1b353fdc46f1
+    name: Location 24
+  - children: []
+    components: []
+    id: cac0a3f3-8baa-4a54-a52f-ee868ee11d30
+    name: Location 25
+  - children: []
+    components: []
+    id: 46158085-a055-4bb9-b84b-ce200906b089
+    name: Location 26
+  - children: []
+    components: []
+    id: e2301db6-ea2e-4bc4-adbe-af5221275643
+    name: Location 27
+  - children: []
+    components: []
+    id: b443a7e7-fe21-4ac5-80ea-85c4facdb21b
+    name: Location 28
+  - children: []
+    components: []
+    id: 939d37f5-0187-4ffb-98fd-0dc11c4eaab4
+    name: Location 29
+  - children: []
+    components: []
+    id: 214d1743-61e0-4b75-b35e-9178132176b0
+    name: Location 30
+  - children: []
+    components: []
+    id: 92bf385a-7672-4a72-b0e9-ce80e55daa2f
+    name: Location 31
+  - children: []
+    components: []
+    id: c9f2cb57-9076-436e-a9d4-cba3bcc1217a
+    name: Location 32
+  - children: []
+    components: []
+    id: 18d3bede-7042-424a-a1bb-d5cef5607c0e
+    name: Location 33
+  - children: []
+    components: []
+    id: 52fcc1c1-1616-468d-9c06-5d14c61a5a7d
+    name: Location 34
+  - children: []
+    components: []
+    id: 70ab7ca3-5180-4e0f-97da-ac879838cba0
+    name: Location 35
+  - children: []
+    components: []
+    id: 99c31f64-d186-45e1-96ec-57a913c9c966
+    name: Location 36
+  - children: []
+    components: []
+    id: c2f8d624-93c0-481c-a8c6-467ff74aef9b
+    name: Location 37
+  - children: []
+    components: []
+    id: e1e34ccd-c386-47ca-b694-27f1c098475a
+    name: Location 38
+  - children: []
+    components: []
+    id: ebb666d0-a340-403e-916d-f295ef6f8c8e
+    name: Location 39
+  - children: []
+    components: []
+    id: 0175cc93-b9f7-47bb-a08f-f15de9df1bb9
+    name: Location 40
+  - children: []
+    components: []
+    id: d48f82ec-0ec7-43b6-aac9-5caa07d7e79d
+    name: Location 41
+  - children: []
+    components: []
+    id: 49c5e46b-0055-4ad3-bf5f-144dd675b0d5
+    name: Location 42
