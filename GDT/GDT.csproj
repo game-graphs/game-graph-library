@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>GDT</RootNamespace>
-    <AssemblyVersion>0.0.1-beta</AssemblyVersion>
+    <AssemblyVersion>0.0.1</AssemblyVersion>
     <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 
