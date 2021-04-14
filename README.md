@@ -18,3 +18,4 @@ while the examples and tests can be found in ``GDT.Test``
 To get started have a look at the two largest examples
 - Graph: ``YamlStorageTests.cs``
 - Pipeline: ``IslandsGenerationTests.cs``
+  ![Island Pipeline Example](https://raw.githubusercontent.com/game-graphs/game-graph-library/main/images/generation_pipeline.webp)
