@@ -17,8 +17,8 @@ namespace GDT.Utility
         {
             var result = layer.Relations.Where(relation =>
                 {
-                    var deg0 = layer.CountNeighbors(relation.Nodes[0]);
-                    var deg1 = layer.CountNeighbors(relation.Nodes[1]);
+                    var deg0 = layer.CountNeighbors(relation.Entities[0]);
+                    var deg1 = layer.CountNeighbors(relation.Entities[1]);
                     
                     if(deg0 >= maxDegree) return false;
                     if(deg1 >= maxDegree) return false;

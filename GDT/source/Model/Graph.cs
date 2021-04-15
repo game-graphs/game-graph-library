@@ -44,23 +44,23 @@ namespace GDT.Model
             Layers.Add(layer);
         }
 
-        public Entity? GetNode(string name)
+        public Entity? GetEntity(string name)
         {
-            return GetNode(node => node.Name.Equals(name));
+            return GetEntity(entity => entity.Name.Equals(name));
         }
         
-        public Entity? GetNode(Guid id)
+        public Entity? GetEntity(Guid id)
         {
-            return GetNode(node => node.ID.Equals(id));
+            return GetEntity(entity => entity.ID.Equals(id));
         }
         
-        public Entity? GetNode(Predicate<Entity> predicate)
+        public Entity? GetEntity(Predicate<Entity> predicate)
         {
-            foreach (var node in Entities)
+            foreach (var entity in Entities)
             {
-                if (predicate.Invoke(node)) return node;
+                if (predicate.Invoke(entity)) return entity;
 
-                Entity? childMatch = node.GetChild(predicate);
+                Entity? childMatch = entity.GetChild(predicate);
                 if (childMatch != null) return childMatch;
             }
             
@@ -85,9 +85,9 @@ namespace GDT.Model
         public Graph Clone()
         {
             Graph graph = new(ID, Name, new List<Entity>(), new List<Layer>());
-            foreach (var node in Entities)
+            foreach (var entity in Entities)
             {
-                graph.Entities.Add(node.Clone(graph, null));
+                graph.Entities.Add(entity.Clone(graph, null));
             }
             
             foreach (var layer in Layers)

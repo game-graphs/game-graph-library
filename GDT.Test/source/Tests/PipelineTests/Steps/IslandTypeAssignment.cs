@@ -65,7 +65,7 @@ namespace GDT.Test.Tests.PipelineTests.Steps
         {
             var (startingIslandNode, _) = nodeDistancePercentageList[0];
             nodeDistancePercentageList.RemoveAt(0);
-            AddIslandTypeComponent(startingIslandNode, Biome.Grassland, Biome.Forrest);
+            AddIslandTypeComponent(startingIslandNode, Biome.Grassland, Biome.Forest);
         }
 
         private static void AddIslandTypeComponent(Entity entity, Biome baseBiome, Biome specialBiome)
@@ -83,7 +83,7 @@ namespace GDT.Test.Tests.PipelineTests.Steps
             List<Biome> biomes = new() { Biome.Grassland };
 
             if (distancePercentage > 0.25f) 
-                biomes.Add(Biome.Forrest);
+                biomes.Add(Biome.Forest);
             
             if (distancePercentage > 0.45f) 
                 biomes.Add(Biome.Swamp);
@@ -95,7 +95,7 @@ namespace GDT.Test.Tests.PipelineTests.Steps
         {
             List<Biome> biomes = new();
 
-            if (SpecialIsNotBase(Biome.Forrest, baseBiome)) biomes.Add(Biome.Forrest);
+            if (SpecialIsNotBase(Biome.Forest, baseBiome)) biomes.Add(Biome.Forest);
             else distancePercentage += 0.35f;
 
             if (distancePercentage > 0.35f && SpecialIsNotBase(Biome.Swamp, baseBiome)) 

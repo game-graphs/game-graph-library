@@ -22,7 +22,7 @@ namespace GDT.Utility
         {
             var component = entity.GetComponent(Position2DComponentName);
             if (component == null)
-                throw new ArgumentNullException($"Expected node {entity} to have a {Position2DComponentName}");
+                throw new ArgumentNullException($"Expected entity {entity} to have a {Position2DComponentName}");
 
             return (component.Get<float>("x"), component.Get<float>("y"));
         }

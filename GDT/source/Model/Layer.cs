@@ -53,9 +53,9 @@ namespace GDT.Model
             return Relations.Find(relation => relation.ID.Equals(guid));
         }
 
-        public List<Relation> GetRelationsContainingNode(Entity entity)
+        public List<Relation> GetRelationsContainingEntity(Entity entity)
         {
-            return Relations.FindAll(relation => relation.Nodes.Contains(entity));
+            return Relations.FindAll(relation => relation.Entities.Contains(entity));
         }
 
         public Layer Clone(Graph graph)
@@ -70,18 +70,18 @@ namespace GDT.Model
             return layer;
         }
 
-        public IEnumerable<Entity> GetNodesInLayer()
+        public IEnumerable<Entity> GetEntitiesInLayer()
         {
-            HashSet<Guid> seenNodes = new HashSet<Guid>();
+            HashSet<Guid> seenEntities = new HashSet<Guid>();
 
             foreach (var relation in Relations)
             {
-                foreach (var node in relation.Nodes)
+                foreach (var entity in relation.Entities)
                 {
-                    if (!seenNodes.Contains(node.ID))
+                    if (!seenEntities.Contains(entity.ID))
                     {
-                        seenNodes.Add(node.ID);
-                        yield return node;
+                        seenEntities.Add(entity.ID);
+                        yield return entity;
                     }
                 }
             }
@@ -89,7 +89,7 @@ namespace GDT.Model
 
         public int CountNeighbors(Entity entity)
         {
-            return Relations.Count(relation => relation.Nodes.Contains(entity));
+            return Relations.Count(relation => relation.Entities.Contains(entity));
         }
 
         public int Distance(Entity from, Entity to, List<Entity> blockedNodes)
@@ -99,24 +99,24 @@ namespace GDT.Model
             if (blockedNodes.Contains(to)) throw new ArgumentException("Cannot block 'target' node");
 
             Dictionary<Entity, int> distanceMap = new Dictionary<Entity, int> { {@from, 0} };
-            Stack<Relation> border = new Stack<Relation>(GetRelationsContainingNode(from));
+            Stack<Relation> border = new Stack<Relation>(GetRelationsContainingEntity(from));
 
             while (border.Any())
             {
                 Relation currentRelation = border.Pop();
 
-                int distanceNode0 = distanceMap.GetValueOrDefault(currentRelation.Nodes[0], -1);
-                int distanceNode1 = distanceMap.GetValueOrDefault(currentRelation.Nodes[1], -1);
+                int distanceNode0 = distanceMap.GetValueOrDefault(currentRelation.Entities[0], -1);
+                int distanceNode1 = distanceMap.GetValueOrDefault(currentRelation.Entities[1], -1);
 
                 if (distanceNode0 == -1 || distanceNode1 == -1)
                 {
                     if (distanceNode0 > distanceNode1)
                     {
-                        distanceMap.Add(currentRelation.Nodes[1], distanceNode0 + 1);
+                        distanceMap.Add(currentRelation.Entities[1], distanceNode0 + 1);
                     }
                     else
                     {
-                        distanceMap.Add(currentRelation.Nodes[0], distanceNode0 + 1);
+                        distanceMap.Add(currentRelation.Entities[0], distanceNode0 + 1);
                     }
                 }
 

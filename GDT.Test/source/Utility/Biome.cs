@@ -5,7 +5,7 @@
         Unassigned = 0,
         Sea = 1,
         Grassland = 2,
-        Forrest = 3,
+        Forest = 3,
         Swamp = 4,
         Mountain = 5,
     }

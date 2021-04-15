@@ -7,22 +7,22 @@ namespace GDT.Utility
 {
     public static class GraphBuilder
     {
-        public static Graph BuildCircleGraph(string graphName, int numberOfNodes,
-            string layerName = "WfcNeighborLayer", string nodeNameFormat = "Location {0}")
+        public static Graph BuildCircleGraph(string graphName, int numberOfEntities,
+            string layerName = "WfcNeighborLayer", string entityNameFormat = "Location {0}")
         {
-            var connections = SeriesGenerator.PairSeries(0, numberOfNodes-1, true);
+            var connections = SeriesGenerator.PairSeries(0, numberOfEntities-1, true);
             
-            return BuildGraph(graphName, numberOfNodes, connections.ToList(), layerName, nodeNameFormat);
+            return BuildGraph(graphName, numberOfEntities, connections.ToList(), layerName, entityNameFormat);
         }
         
-        public static Graph BuildGraph(string graphName, int numberOfNodes, List<Tuple<int, int>> connections,
-                                            string layerName = "WfcNeighborLayer", string nodeNameFormat = "Location {0}")
+        public static Graph BuildGraph(string graphName, int numberOfEntities, List<Tuple<int, int>> connections,
+                                            string layerName = "WfcNeighborLayer", string entityNameFormat = "Location {0}")
         {
             Graph connectionGraph = new Graph(graphName);
             
-            for (int i = 1; i <= numberOfNodes; i++)
+            for (int i = 1; i <= numberOfEntities; i++)
             {
-                Entity entity = new(String.Format(nodeNameFormat, i), connectionGraph);
+                Entity entity = new(String.Format(entityNameFormat, i), connectionGraph);
                 connectionGraph.Entities.Add(entity);
             }
             
@@ -31,10 +31,10 @@ namespace GDT.Utility
 
             foreach (var (from, to) in connections)
             {
-                var fromNode = connectionGraph.Entities[from];
-                var toNode = connectionGraph.Entities[to];
-                neighborLayer.AddRelation(fromNode, toNode, 
-                    $"Connection '{fromNode.Name}' <-> '{toNode.Name}'");
+                var fromEntity = connectionGraph.Entities[from];
+                var toEntity = connectionGraph.Entities[to];
+                neighborLayer.AddRelation(fromEntity, toEntity, 
+                    $"Connection '{fromEntity.Name}' <-> '{toEntity.Name}'");
             }
 
             return connectionGraph;

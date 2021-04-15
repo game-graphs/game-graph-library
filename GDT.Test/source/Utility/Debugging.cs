@@ -10,26 +10,26 @@ namespace GDT.Utility.Visualization
 {
     public class Debugging
     {
-        public static void PrintGraphNodes(IEnumerable<Entity> nodes, Func<Entity, int, string> toString, int depth = 0)
+        public static void PrintGraphEntities(IEnumerable<Entity> entities, Func<Entity, int, string> toString, int depth = 0)
         {
-            foreach (var node in nodes)
+            foreach (var entity in entities)
             {
-                Console.WriteLine(toString.Invoke(node, depth));
+                Console.WriteLine(toString.Invoke(entity, depth));
 
-                PrintGraphNodes(node.Children, toString, depth + 1);
+                PrintGraphEntities(entity.Children, toString, depth + 1);
             }
         }
 
-        public static void PrintWfcGraphModules<TTileData>(IEnumerable<Entity> nodes,
+        public static void PrintWfcGraphModules<TTileData>(IEnumerable<Entity> entities,
             string wfcComponentName = "WfcComponent", 
             string wfcCellName = "WfcCell") where TTileData: struct
         {
-            PrintGraphNodes(nodes, (node, d) => DepthString(d) + WfcComponentToString<TTileData>(node, wfcComponentName, wfcCellName));
+            PrintGraphEntities(entities, (entity, d) => DepthString(d) + WfcComponentToString<TTileData>(entity, wfcComponentName, wfcCellName));
         }
         
-        public static void PrintGraph(IEnumerable<Entity> nodes)
+        public static void PrintGraph(IEnumerable<Entity> entities)
         {
-            PrintGraphNodes(nodes, (node, d) => DepthString(d) + node.Name);
+            PrintGraphEntities(entities, (entity, d) => DepthString(d) + entity.Name);
         }
 
         private static string DepthString(int depth)
@@ -40,7 +40,7 @@ namespace GDT.Utility.Visualization
         private static string WfcComponentToString<TTileData>(Entity entity, string wfcComponentName, string wfcCellName)
                                 where TTileData: struct
         {
-            var cell = GetWfcCellFromNode<TTileData>(entity, wfcComponentName, wfcCellName);
+            var cell = GetWfcCellFromEntity<TTileData>(entity, wfcComponentName, wfcCellName);
             if (cell == null) return "missing wfc component";
 
             string modules = "NO AVAILABLE MODULES";
@@ -54,7 +54,7 @@ namespace GDT.Utility.Visualization
             return $"index: {cell.Position} modules: {modules}";
         }
 
-        private static WfcCell<WfcGraphTile<TTileData>, int> GetWfcCellFromNode<TTileData>(Entity entity, string wfcComponentName, string wfcCellName) 
+        private static WfcCell<WfcGraphTile<TTileData>, int> GetWfcCellFromEntity<TTileData>(Entity entity, string wfcComponentName, string wfcCellName) 
                             where TTileData: struct
         {
             var component = entity.GetComponent(wfcComponentName);

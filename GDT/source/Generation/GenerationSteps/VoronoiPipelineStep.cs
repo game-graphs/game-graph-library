@@ -37,21 +37,21 @@ namespace GDT.Generation.GenerationSteps
             var fortuneSites = points.Select(point => new FortuneSite(point.X, point.Y)).ToList();
             FortunesAlgorithm.Run(fortuneSites, _generationMin.X, _generationMin.Y, _generationMax.X, _generationMax.Y);
 
-            // add nodes to graph
-            Dictionary<FortuneSite, Entity> siteToNodeMapping = new ();
+            // add entities to graph
+            Dictionary<FortuneSite, Entity> siteToEntityMapping = new ();
             foreach (var cell in fortuneSites)
             {
-                var areaNode = new Entity(_cellNameSupplier.Invoke(cell.X, cell.Y), graph);
+                var areaEntity = new Entity(_cellNameSupplier.Invoke(cell.X, cell.Y), graph);
                 EntityComponent areaComponent = new ("AreaComponent");
                 areaComponent.SetProperty("cell", cell);
-                areaNode.Components.Add(areaComponent);
+                areaEntity.Components.Add(areaComponent);
 
-                ComponentUtility.AddPosition2D(areaNode, (float) cell.X, (float) cell.Y);
+                ComponentUtility.AddPosition2D(areaEntity, (float) cell.X, (float) cell.Y);
 
-                if (_parent == null) graph.Entities.Add(areaNode);
-                else _parent.AddChild(areaNode);
+                if (_parent == null) graph.Entities.Add(areaEntity);
+                else _parent.AddChild(areaEntity);
                 
-                siteToNodeMapping.Add(cell, areaNode);
+                siteToEntityMapping.Add(cell, areaEntity);
             }
 
             // add relations to graph
@@ -60,7 +60,7 @@ namespace GDT.Generation.GenerationSteps
             {
                 foreach (var cellNeighbor in cell.Neighbors)
                 {
-                    layer.AddRelation(siteToNodeMapping[cell], siteToNodeMapping[cellNeighbor]);
+                    layer.AddRelation(siteToEntityMapping[cell], siteToEntityMapping[cellNeighbor]);
                 }
             }
             

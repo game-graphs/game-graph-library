@@ -28,7 +28,7 @@ namespace GDT.Test.Tests.PipelineTests
             float voronoiRadius = islandSize * 0.15f;
             string zoneLayerName = "ZoneLayer";
 
-            pipeline.AddStep(new PoissonLocationsAsNodesPipelineStep(islandSize, new(islandSize / 2, islandSize / 2),
+            pipeline.AddStep(new PoissonLocationsAsEntitiesPipelineStep(islandSize, new(islandSize / 2, islandSize / 2),
                     worldRegion - new Vector2(islandSize, islandSize), null, 60));
             pipeline.AddStep(SetupIslandVisualizationStep(worldRegion, islandSize));
             pipeline.AddStep(new IslandTypeAssignment(worldRegion / 2));
@@ -66,7 +66,7 @@ namespace GDT.Test.Tests.PipelineTests
                 case Biome.Grassland: return Color.LimeGreen;
                 case Biome.Mountain: return Color.LightBlue;
                 case Biome.Sea: return Color.DodgerBlue;
-                case Biome.Forrest: return Color.DarkGreen;
+                case Biome.Forest: return Color.DarkGreen;
                 case Biome.Swamp: return Color.DarkGoldenrod;
                 case Biome.Unassigned: return Color.Purple;
             }
@@ -121,7 +121,7 @@ namespace GDT.Test.Tests.PipelineTests
                     Layer? zoneLayer = graph.GetLayer(layerName);
                     if(zoneLayer == null) throw new ArgumentNullException($"{zoneLayer} doesnt contain nodes");
                     
-                    return zoneLayer.GetNodesInLayer().ToList();
+                    return zoneLayer.GetEntitiesInLayer().ToList();
                 },
                 backgroundColor: MapBiomeToColor(Biome.Sea));
         }
@@ -143,7 +143,7 @@ namespace GDT.Test.Tests.PipelineTests
                     Layer? zoneLayer = graph.GetLayer(layerName);
                     if(zoneLayer == null) throw new ArgumentNullException($"{zoneLayer} doesnt contain nodes");
                     
-                    return zoneLayer.GetNodesInLayer().ToList();
+                    return zoneLayer.GetEntitiesInLayer().ToList();
                 },
                 backgroundColor: MapBiomeToColor(Biome.Sea));
         }

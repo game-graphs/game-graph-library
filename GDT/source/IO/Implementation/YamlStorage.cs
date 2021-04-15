@@ -22,42 +22,42 @@ namespace GDT.IO.Implementation
                 id = graph.ID,
                 name = graph.Name,
                 layers = MakeLayerDocuments(graph.GetLayers()),
-                entities = MakeNodeDocuments(graph.Entities)
+                entities = MakeEntityDocuments(graph.Entities)
             };
 
             return graphDocument;
         }
 
-        private static List<EntityDocument> MakeNodeDocuments(IEnumerable<Entity> nodes)
+        private static List<EntityDocument> MakeEntityDocuments(IEnumerable<Entity> entities)
         {
-            List<EntityDocument> nodeDocuments = new List<EntityDocument>();
+            List<EntityDocument> entityDocuments = new List<EntityDocument>();
 
-            foreach (var node in nodes)
+            foreach (var entity in entities)
             {
-                nodeDocuments.Add(MakeNodeDocument(node));
+                entityDocuments.Add(MakeEntityDocument(entity));
             }
 
-            return nodeDocuments;
+            return entityDocuments;
         }
 
-        private static EntityDocument MakeNodeDocument(Entity entity)
+        private static EntityDocument MakeEntityDocument(Entity entity)
         {
             EntityDocument entityDocument = new EntityDocument()
             {
                 id = entity.ID,
                 name = entity.Name,
-                children = MakeNodeDocuments(entity.Children),
+                children = MakeEntityDocuments(entity.Children),
                 components = MakeComponentDocuments(entity.Components)
             };
 
             return entityDocument;
         }
 
-        private static List<ComponentDocument> MakeComponentDocuments(IEnumerable<EntityComponent> nodeComponents)
+        private static List<ComponentDocument> MakeComponentDocuments(IEnumerable<EntityComponent> entityComponents)
         {
             List<ComponentDocument> componentDocuments = new List<ComponentDocument>();
 
-            foreach (var component in nodeComponents)
+            foreach (var component in entityComponents)
             {
                 componentDocuments.Add(MakeComponentDocument(component));
             }
@@ -94,7 +94,7 @@ namespace GDT.IO.Implementation
             PropertyDocument propertyDocument = new PropertyDocument()
             {
                 name = property.Name,
-                value = property.Value.ToString(),
+                value = property.Value,
                 type_name = property.Type.FullName,
                 type_assembly = property.Type.Assembly.GetName().Name
             };
@@ -141,13 +141,13 @@ namespace GDT.IO.Implementation
 
         private static RelationDocument MakeRelationDocument(Relation relation)
         {
-            var referencedNodes = relation.Nodes.ConvertAll(node => node.ID);
+            var referencedEntities = relation.Entities.ConvertAll(entity => entity.ID);
 
             RelationDocument relationDocument = new RelationDocument()
             {
                 id = relation.ID,
                 name = relation.Name,
-                referenced_entities = referencedNodes,
+                referenced_entities = referencedEntities,
                 properties = new List<PropertyDocument>(relation.Properties.Values.Select(MakeAttributeDocument)),
             };
             return relationDocument;

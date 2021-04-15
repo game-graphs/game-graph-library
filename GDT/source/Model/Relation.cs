@@ -11,16 +11,16 @@ namespace GDT.Model
         public Guid ID { get; }
         public string Name { get; }
         
-        public List<Entity> Nodes { get; }
+        public List<Entity> Entities { get; }
         public WeakReference<Layer> Layer { get; }
         
         public Dictionary<string, Property> Properties { get; }
 
-        public Relation(Guid id, string name, List<Entity> nodes, Layer layer, Dictionary<string, Property> properties)
+        public Relation(Guid id, string name, List<Entity> entities, Layer layer, Dictionary<string, Property> properties)
         {
             ID = id;
             Name = name;
-            Nodes = nodes;
+            Entities = entities;
             Layer = new WeakReference<Layer>(layer);
             Properties = properties;
         }
@@ -33,20 +33,20 @@ namespace GDT.Model
             : this(Guid.NewGuid(), name, new List<Entity>() {from, to}, layer, new())
         {}
 
-        public Entity? GetNode(string name)
+        public Entity? GetEntity(string name)
         {
-            return Nodes.Find(node => node.Name.Equals(name));
+            return Entities.Find(entity => entity.Name.Equals(name));
         }
 
         public Relation Copy(Graph graph, Layer layer)
         {
             Relation relation = new(ID, Name, new List<Entity>(), layer, new Dictionary<string, Property>());
 
-            foreach (var node in Nodes)
+            foreach (var entity in Entities)
             {
-                var newNodeReference = graph.GetNode(node.ID);
-                if (newNodeReference == null) throw new ArgumentException($"Copying failed because node id {node.ID} wasn't found!");
-                relation.Nodes.Add(newNodeReference);
+                var newNodeReference = graph.GetEntity(entity.ID);
+                if (newNodeReference == null) throw new ArgumentException($"Copying failed because node id {entity.ID} wasn't found!");
+                relation.Entities.Add(newNodeReference);
             }
 
             foreach (var property in Properties.Values)
@@ -59,15 +59,15 @@ namespace GDT.Model
 
         public override string ToString()
         {
-            return $"Relation ({Name}): Nodes: {Nodes.Select(node => node.Name).Aggregate((s0, s1) => s0 + " " + s1)}";
+            return $"Relation ({Name}): Entities: {Entities.Select(node => node.Name).Aggregate((s0, s1) => s0 + " " + s1)}";
         }
 
-        public Entity GetOtherNode(Entity currentEntity)
+        public Entity GetOtherEntity(Entity currentEntity)
         {
-            if (Nodes[0] == currentEntity) return Nodes[1];
-            if (Nodes[1] == currentEntity) return Nodes[0];
+            if (Entities[0] == currentEntity) return Entities[1];
+            if (Entities[1] == currentEntity) return Entities[0];
 
-            throw new NotSupportedException("Currently only supporting relations with two nodes.");
+            throw new NotSupportedException("Currently only supporting relations with two entities.");
         }
     }
 }

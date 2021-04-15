@@ -19,7 +19,7 @@ namespace GDT.Generation.GenerationSteps
             Layer layer = graph.GetLayer(_layerName);
             if (layer == null) throw new ArgumentException($"Invalid layer name ({_layerName})!");
 
-            foreach (var node in layer.GetNodesInLayer())
+            foreach (var node in layer.GetEntitiesInLayer())
             {
                 if (node.Children.Count != 1)
                     throw new ArgumentException($"Expected 1 child got {node.Children.Count}");

@@ -9,9 +9,9 @@ using GDT.Utility;
 
 namespace GDT.Generation.GenerationSteps
 {
-    public class PoissonLocationsAsNodesPipelineStep : IPipelineStep
+    public class PoissonLocationsAsEntitiesPipelineStep : IPipelineStep
     {
-        public string Name { get; } = nameof(PoissonLocationsAsNodesPipelineStep);
+        public string Name { get; } = nameof(PoissonLocationsAsEntitiesPipelineStep);
 
         private readonly float _radius;
         private readonly Vector2 _offset;
@@ -19,9 +19,9 @@ namespace GDT.Generation.GenerationSteps
         private readonly int _rejectionThreshold;
         
         private readonly Entity? _parent;
-        private readonly Func<float, float, string> _cellNameSupplier = (x, y) => $"Node ({x:0},{y:0})";
+        private readonly Func<float, float, string> _cellNameSupplier = (x, y) => $"Entity ({x:0},{y:0})";
 
-        public PoissonLocationsAsNodesPipelineStep(float radius, Vector2 offset, Vector2 sampleRegionSize, Entity? parent, int rejectionThreshold = 30)
+        public PoissonLocationsAsEntitiesPipelineStep(float radius, Vector2 offset, Vector2 sampleRegionSize, Entity? parent, int rejectionThreshold = 30)
         {
             _radius = radius;
             _offset = offset;

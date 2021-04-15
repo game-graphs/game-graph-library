@@ -36,17 +36,17 @@ namespace GDT.Algorithm.WFC.Implementation.Graph
 
     public class TileDescriptor<TTileData> where TTileData: struct
     {
-        public List<BorderNode> BorderNodes { get; }
+        public List<BorderNode> BorderEntities { get; }
         public TTileData AdditionalTileData { get; set; }
 
         public TileDescriptor()
         {
-            BorderNodes = new List<BorderNode>();
+            BorderEntities = new List<BorderNode>();
         }
 
-        public void AddBorderNode(Entity entity, uint mandatoryConnections = 1, uint optionalConnections = 0)
+        public void AddBorderEntity(Entity entity, uint mandatoryConnections = 1, uint optionalConnections = 0)
         {
-            BorderNodes.Add(new BorderNode()
+            BorderEntities.Add(new BorderNode()
             {
                 Entity = entity,
                 MandatoryConnections = mandatoryConnections, 

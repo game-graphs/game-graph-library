@@ -76,6 +76,36 @@ namespace GDT.Test.Tests.IOTests
         }
         
         [Test]
+        public void TestSaveAttributes()
+        {
+            Graph entityGraph = new ("ComponentGraphTest");
+            Entity entity = new ("Entity with Component", entityGraph);
+            EntityComponent entityComponent = new("TestComponent");
+            entityComponent.SetProperty("int", 12);
+            entityComponent.SetProperty("long", 15213L);
+            entityComponent.SetProperty("enum", Biome.Forest);
+            entityComponent.SetProperty("list", new List<int>() { 1,2,3,4,5,6});
+            entity.Components.Add(entityComponent);
+            
+            entityGraph.Entities.Add(entity);
+            
+            
+            string content = YamlGraphStorage.SaveGraph(entityGraph);
+            FileUtilities.WriteFile("graph_with_entity.yaml", "./", content);
+
+            // test save and load in the same order
+            Graph g = YamlGraphStorage.LoadGraph(content);
+            Entity? e = g.GetEntity("Entity with Component");
+            Assert.NotNull(e, "Expected to find 'Entity with Component'");
+            EntityComponent? comp = e?.GetComponent("TestComponent");
+            Assert.NotNull(comp, "Expected to find 'TestComponent'");
+            
+            Assert.AreEqual(comp?.Get<int>("int"), 12, "int property to be 12");
+            Assert.AreEqual(comp?.Get<Biome>("enum"), Biome.Forest, "enum property to be Forest");
+            Assert.AreEqual(comp?.Get<List<int>>("list"), new List<int>() { 1,2,3,4,5,6}, "list property to be 1,2,3,4,5,6");
+        }
+        
+        [Test]
         public void TestGenerateSimpleGraphSpace()
         {
             List<Tuple<int, int>> connections = new ();

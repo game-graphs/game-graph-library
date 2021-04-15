@@ -40,7 +40,7 @@ namespace GDT.Generation.GenerationSteps
             GeometryGraph geometryGraph = new GeometryGraph();
 
             Dictionary<Entity, MSNode> nodeMapping = new Dictionary<Entity, MSNode>();
-            foreach (var node in layer.GetNodesInLayer())
+            foreach (var node in layer.GetEntitiesInLayer())
             {
                 MSNode msNode = new MSNode()
                 {
@@ -54,7 +54,7 @@ namespace GDT.Generation.GenerationSteps
 
             foreach (var relation in layer.Relations)
             {
-                geometryGraph.Edges.Add(new Edge(nodeMapping[relation.Nodes[0]], nodeMapping[relation.Nodes[1]]));
+                geometryGraph.Edges.Add(new Edge(nodeMapping[relation.Entities[0]], nodeMapping[relation.Entities[1]]));
             }
             
             return geometryGraph;

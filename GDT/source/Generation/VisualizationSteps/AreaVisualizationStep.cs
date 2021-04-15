@@ -13,14 +13,14 @@ namespace GDT.Generation.VisualizationSteps
     {
         public string Name { get; } = nameof(AreaVisualizationStep);
 
-        private readonly Func<Graph, List<Entity>> _getNodesWithAreas;
-        private readonly Func<Entity, List<PointF>> _getPointsFromNode = AreaFromNodeToVector2;
+        private readonly Func<Graph, List<Entity>> _getEntitiesWithAreas;
+        private readonly Func<Entity, List<PointF>> _getPointsFromEntity = AreaFromEntityToVector2;
         private readonly Action<ImageDrawing> _onImageProduced;
         private readonly int _width;
         private readonly int _height;
         
         private readonly Color _areaColor;
-        private readonly Func<Entity, Color>? _getColorFromNode = null;
+        private readonly Func<Entity, Color>? _getColorFromEntity = null;
         private readonly Color _backgroundColor = Color.Transparent;
 
         public AreaVisualizationStep( 
@@ -28,34 +28,34 @@ namespace GDT.Generation.VisualizationSteps
             int height, 
             Color areaColor,
             Action<ImageDrawing> onImageProduced,
-            Func<Graph, List<Entity>> getNodesWithAreas, 
-            Func<Entity, List<PointF>>? getPointsFromNode = null,
+            Func<Graph, List<Entity>> getEntitiesWithAreas, 
+            Func<Entity, List<PointF>>? getPointsFromEntity = null,
             Color? backgroundColor = null)
         {
             _width = width;
             _height = height;
             _areaColor = areaColor;
             _onImageProduced = onImageProduced;
-            _getNodesWithAreas = getNodesWithAreas;
-            _getPointsFromNode = getPointsFromNode ?? _getPointsFromNode;
+            _getEntitiesWithAreas = getEntitiesWithAreas;
+            _getPointsFromEntity = getPointsFromEntity ?? _getPointsFromEntity;
             _backgroundColor = backgroundColor ?? _backgroundColor;
         }
         
         public AreaVisualizationStep( 
             int width, 
             int height, 
-            Func<Entity, Color> getColorFromNode,
+            Func<Entity, Color> getColorFromEntity,
             Action<ImageDrawing> onImageProduced,
-            Func<Graph, List<Entity>> getNodesWithAreas, 
-            Func<Entity, List<PointF>>? getPointsFromNode = null,
+            Func<Graph, List<Entity>> getEntitiesWithAreas, 
+            Func<Entity, List<PointF>>? getPointsFromEntity = null,
             Color? backgroundColor = null)
         {
             _width = width;
             _height = height;
-            _getColorFromNode = getColorFromNode;
+            _getColorFromEntity = getColorFromEntity;
             _onImageProduced = onImageProduced;
-            _getNodesWithAreas = getNodesWithAreas;
-            _getPointsFromNode = getPointsFromNode ?? _getPointsFromNode;
+            _getEntitiesWithAreas = getEntitiesWithAreas;
+            _getPointsFromEntity = getPointsFromEntity ?? _getPointsFromEntity;
             _backgroundColor = backgroundColor ?? _backgroundColor;
         }
 
@@ -64,16 +64,16 @@ namespace GDT.Generation.VisualizationSteps
             ImageDrawing drawing = new (_width, _height);
             drawing.Clear(_backgroundColor);
 
-            if (_getColorFromNode == null)
+            if (_getColorFromEntity == null)
             {
-                var areas = _getNodesWithAreas(graph).Select(node => _getPointsFromNode(node)).ToList();
+                var areas = _getEntitiesWithAreas(graph).Select(entity => _getPointsFromEntity(entity)).ToList();
                 areas.ForEach(area => drawing.FillPoly(area, _areaColor));
             }
             else
             {
-                var nodeAreaPairs = _getNodesWithAreas.Invoke(graph).Select(node => (node,_getPointsFromNode.Invoke(node))).ToList();
-                nodeAreaPairs.ForEach(
-                    (nodePointPair) => drawing.FillPoly(nodePointPair.Item2, _getColorFromNode(nodePointPair.Item1)));
+                var entityAreaPairs = _getEntitiesWithAreas.Invoke(graph).Select(entity => (entity,_getPointsFromEntity.Invoke(entity))).ToList();
+                entityAreaPairs.ForEach(
+                    (entityPointPair) => drawing.FillPoly(entityPointPair.Item2, _getColorFromEntity(entityPointPair.Item1)));
             }
             
             _onImageProduced(drawing);
@@ -81,7 +81,7 @@ namespace GDT.Generation.VisualizationSteps
             return graph;
         }
         
-        private static List<PointF> AreaFromNodeToVector2(Entity entity)
+        private static List<PointF> AreaFromEntityToVector2(Entity entity)
         {
             var areaComponent = entity.GetComponent("AreaComponent");
             var site = areaComponent?.Get<FortuneSite?>("cell");

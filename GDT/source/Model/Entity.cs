@@ -41,10 +41,10 @@ namespace GDT.Model
 
         public void RemoveFromParent()
         {
-            Entity? parentNode;
-            if (Parent.TryGetTarget(out parentNode))
+            Entity? parent;
+            if (Parent.TryGetTarget(out parent))
             {
-                parentNode?.Children.Remove(this);
+                parent?.Children.Remove(this);
                 Parent = new WeakReference<Entity?>(null);
             }
         }
@@ -72,12 +72,12 @@ namespace GDT.Model
 
         public Entity? GetChild(string name, bool recursive = true)
         {
-            return GetChild(node => node.Name.Equals(name), recursive);
+            return GetChild(entity => entity.Name.Equals(name), recursive);
         }
 
         public Entity? GetChild(Guid id, bool recursive = true)
         {
-            return GetChild(node => node.ID.Equals(id), recursive);
+            return GetChild(entity => entity.ID.Equals(id), recursive);
         }
         
         public Entity? GetChild(Predicate<Entity> predicate, bool recursive = true)
@@ -88,10 +88,10 @@ namespace GDT.Model
                 
                 if (recursive)
                 {
-                    Entity? matchedNode = child.GetChild(predicate, recursive);
-                    if (matchedNode != null)
+                    Entity? matchedEntity = child.GetChild(predicate, recursive);
+                    if (matchedEntity != null)
                     {
-                        return matchedNode;
+                        return matchedEntity;
                     }
                 }
             }

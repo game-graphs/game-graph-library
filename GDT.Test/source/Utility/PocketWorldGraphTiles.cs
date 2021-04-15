@@ -59,7 +59,7 @@ namespace GDT.Utility.Visualization
 
                 return isTileAvailable;
             });
-            roadTile.TileDescriptor.AddBorderNode(roadEntity, 2, 2);
+            roadTile.TileDescriptor.AddBorderEntity(roadEntity, 2, 2);
             roadTile.TileDescriptor.AdditionalTileData = new WorldData(TileType.Road);
 
             return roadTile;
@@ -75,8 +75,8 @@ namespace GDT.Utility.Visualization
         public static WfcGraphTile<WorldData> CreateCityTile(string cityName, Blackboard initialBlackboard)
         {
             var cityGraph = Graph.CreatePlaceholder(cityName);
-            var cityNode = new Entity(cityName, cityGraph);
-            cityGraph.Entities.Add(cityNode);
+            var cityEntity = new Entity(cityName, cityGraph);
+            cityGraph.Entities.Add(cityEntity);
             var blackboardCityCountKey = IncrementBlackboardCount(cityName, initialBlackboard);
             
             var cityTile = new WfcGraphTile<WorldData>(cityGraph, (thisModule, thisCell, wfcSpace) =>
@@ -93,7 +93,7 @@ namespace GDT.Utility.Visualization
                 
                 return true;
             });
-            cityTile.TileDescriptor.AddBorderNode(cityNode, 1, 3);
+            cityTile.TileDescriptor.AddBorderEntity(cityEntity, 1, 3);
             cityTile.TileDescriptor.AdditionalTileData = new WorldData(TileType.City);
 
             return cityTile;
@@ -102,8 +102,8 @@ namespace GDT.Utility.Visualization
         public static WfcGraphTile<WorldData> CreateSpecialTile(string tileName, Blackboard initialBlackboard, uint mandatoryConnections = 1, uint optionalConnections = 0)
         {
             var specialGraph = Graph.CreatePlaceholder(tileName);
-            var specialNode = new Entity(tileName, specialGraph);
-            specialGraph.Entities.Add(specialNode);
+            var specialEntity = new Entity(tileName, specialGraph);
+            specialGraph.Entities.Add(specialEntity);
             var blackboardTileCountKey = IncrementBlackboardCount(tileName, initialBlackboard);
             
             var specialTile = new WfcGraphTile<WorldData>(specialGraph, (thisModule, thisCell, wfcSpace) =>
@@ -120,7 +120,7 @@ namespace GDT.Utility.Visualization
                 
                 return true;
             });
-            specialTile.TileDescriptor.AddBorderNode(specialNode, mandatoryConnections, optionalConnections);
+            specialTile.TileDescriptor.AddBorderEntity(specialEntity, mandatoryConnections, optionalConnections);
             specialTile.TileDescriptor.AdditionalTileData = new WorldData(TileType.City);
 
             return specialTile;
@@ -128,12 +128,12 @@ namespace GDT.Utility.Visualization
 
         private static bool CanConnect(WfcGraphTile<WorldData> thisModule, List<WfcCell<WfcGraphTile<WorldData>, int>> neighbors)
         {
-            uint availableTotalConnections = thisModule.TileDescriptor.BorderNodes
+            uint availableTotalConnections = thisModule.TileDescriptor.BorderEntities
                                                             .Select(bn => bn.TotalConnections)
                                                             .Aggregate((c1, c2) => c1 + c2);
             if (neighbors.Count > availableTotalConnections) return false;
             
-            uint availableMandatoryConnections = thisModule.TileDescriptor.BorderNodes
+            uint availableMandatoryConnections = thisModule.TileDescriptor.BorderEntities
                 .Select(bn => bn.MandatoryConnections)
                 .Aggregate((c1, c2) => c1 + c2);
             if (neighbors.Count < availableMandatoryConnections) return false;

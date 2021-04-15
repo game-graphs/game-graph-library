@@ -22,13 +22,13 @@ namespace GDT.IO.Implementation
         private static Graph ParseGraph(GraphDocument graphDocument)
         {
             Graph graph = new Graph(graphDocument.id, graphDocument.name, new List<Entity>(), new List<Layer>());
-            graphDocument.entities.ForEach(node => graph.Entities.Add(ParseNode(node, graph)));
+            graphDocument.entities.ForEach(entity => graph.Entities.Add(ParseEntity(entity, graph)));
             graphDocument.layers.ForEach(layer => graph.AddLayer(ParseLayer(layer, graph)));
             
             return graph;
         }
 
-        private static Entity ParseNode(EntityDocument entityDocument, Graph graph)
+        private static Entity ParseEntity(EntityDocument entityDocument, Graph graph)
         {
             Entity entity = new Entity(entityDocument.id, entityDocument.name, graph);
 
@@ -40,7 +40,7 @@ namespace GDT.IO.Implementation
                 }
             }
             
-            entityDocument.children?.ForEach(childNodeDoc => entity.AddChild(ParseNode(childNodeDoc, graph)));
+            entityDocument.children?.ForEach(childEntityDoc => entity.AddChild(ParseEntity(childEntityDoc, graph)));
 
             return entity;
         }
@@ -98,16 +98,16 @@ namespace GDT.IO.Implementation
 
             if (relationDocument.referenced_entities != null)
             {
-                foreach (Guid refNodeGuid in relationDocument.referenced_entities)
+                foreach (Guid refEntityGuid in relationDocument.referenced_entities)
                 {
-                    Entity? refNode = graph.GetNode(refNodeGuid);
-                    if (refNode != null)
+                    Entity? refEntity = graph.GetEntity(refEntityGuid);
+                    if (refEntity != null)
                     {
-                        relation.Nodes.Add(refNode);
+                        relation.Entities.Add(refEntity);
                     }
                     else
                     {
-                        Console.Error.WriteLine($"Could not find node for guid: {refNodeGuid}");
+                        Console.Error.WriteLine($"Could not find entity for guid: {refEntityGuid}");
                     }
                 }
             }

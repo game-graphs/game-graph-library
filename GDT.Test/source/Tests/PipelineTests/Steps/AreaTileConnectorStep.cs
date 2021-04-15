@@ -36,8 +36,8 @@ namespace GDT.Tests.PipelineTests.Steps
 
         private void ConnectChildren(Relation parentRelation, Layer childLayer)
         {
-            var np0 = parentRelation.Nodes[0];
-            var np1 = parentRelation.Nodes[1];
+            var np0 = parentRelation.Entities[0];
+            var np1 = parentRelation.Entities[1];
 
             var cp0 = FindRandomUnconnectedChildNode(np0, childLayer);
             var cp1 = FindRandomUnconnectedChildNode(np1, childLayer);

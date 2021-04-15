@@ -8,16 +8,16 @@ namespace GDT.Generation.GenerationSteps
     {
         public string Name { get; } = nameof(BaseBiomeAssignmentPipelineStep);
         
-        private readonly Func<List<Entity>> _nodesToEvaluate;
+        private readonly Func<List<Entity>> _entitiesToEvaluate;
 
-        protected BaseBiomeAssignmentPipelineStep(Func<List<Entity>> nodesToEvaluate)
+        protected BaseBiomeAssignmentPipelineStep(Func<List<Entity>> entitiesToEvaluate)
         {
-            _nodesToEvaluate = nodesToEvaluate;
+            _entitiesToEvaluate = entitiesToEvaluate;
         }
 
         public Graph ExecuteStep(Graph graph)
         {
-            AssignBiomes(_nodesToEvaluate.Invoke());
+            AssignBiomes(_entitiesToEvaluate.Invoke());
 
             return graph;
         }

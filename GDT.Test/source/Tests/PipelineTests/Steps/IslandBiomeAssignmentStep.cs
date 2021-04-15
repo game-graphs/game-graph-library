@@ -13,7 +13,7 @@ namespace GDT.Test.Tests.PipelineTests.Steps
         private readonly float _islandRadius;
         private readonly Random _random;
 
-        public IslandBiomeAssignmentStep(Func<List<Entity>> nodesToEvaluate, Vector2 islandCenter, float islandRadius) : base(nodesToEvaluate)
+        public IslandBiomeAssignmentStep(Func<List<Entity>> entitiesToEvaluate, Vector2 islandCenter, float islandRadius) : base(entitiesToEvaluate)
         {
             _random = new Random();
             _islandCenter = islandCenter;

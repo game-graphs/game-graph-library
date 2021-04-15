@@ -57,7 +57,7 @@ namespace GDT.IO.Implementation
             stringBuilder.AppendLine($"{MakeIndent(indent)}graph [fontsize=10 fontname=\"Verdana\" compound=true];");
             stringBuilder.AppendLine($"{MakeIndent(indent)}node [shape=record fontsize=10 fontname=\"Verdana\"];");
 
-            AddNodes(stringBuilder, graph.Entities, indent);
+            AddEntities(stringBuilder, graph.Entities, indent);
             
             stringBuilder.AppendLine();
 
@@ -69,22 +69,22 @@ namespace GDT.IO.Implementation
             stringBuilder.AppendLine("}");
         }
 
-        private static void AddNodes(in StringBuilder stringBuilder, in IEnumerable<Entity> nodes, int indent)
+        private static void AddEntities(in StringBuilder stringBuilder, in IEnumerable<Entity> entities, int indent)
         {
-            foreach (var node in nodes)
+            foreach (var entity in entities)
             {
-                if (node.Children.Count > 0)
+                if (entity.Children.Count > 0)
                 {
-                    AddNodesAsSubgraph(stringBuilder, node, indent);
+                    AddEntitiesAsSubgraph(stringBuilder, entity, indent);
                 }
                 else
                 {
-                    stringBuilder.AppendLine($"{MakeIndent(indent)}\"{node.ID}\" [label=\"{node.Name}\"];");
+                    stringBuilder.AppendLine($"{MakeIndent(indent)}\"{entity.ID}\" [label=\"{entity.Name}\"];");
                 }
             }
         }
         
-        private static void AddNodesAsSubgraph(in StringBuilder stringBuilder, in Entity entity, int indent)
+        private static void AddEntitiesAsSubgraph(in StringBuilder stringBuilder, in Entity entity, int indent)
         {
             stringBuilder.AppendLine();
             stringBuilder.AppendLine($"{MakeIndent(indent)}subgraph cluster_{entity.ID:N} {{");
@@ -101,7 +101,7 @@ namespace GDT.IO.Implementation
                 if (child.Children.Count > 0)
                 {
                     indent++;
-                    AddNodesAsSubgraph(stringBuilder, child, indent);
+                    AddEntitiesAsSubgraph(stringBuilder, child, indent);
                     indent--;
                 }
                 else
@@ -118,34 +118,34 @@ namespace GDT.IO.Implementation
         {
             foreach (var relation in layer.Relations)
             {
-                string nodeConnections = relation.Nodes.Select(node => node.ID.ToString())
+                string entityConnections = relation.Entities.Select(entity => entity.ID.ToString())
                     .Aggregate((s1, s2) => $"\"{s1}\" -- \"{s2}\"");
 
                 string clusterConnection = "";
-                if (relation.Nodes[0].Children.Any())
+                if (relation.Entities[0].Children.Any())
                 {
-                    clusterConnection = $" [ltail=cluster_{relation.Nodes[0].ID:N}, lhead=cluster_{relation.Nodes[1].ID:N}]";
+                    clusterConnection = $" [ltail=cluster_{relation.Entities[0].ID:N}, lhead=cluster_{relation.Entities[1].ID:N}]";
                 }
-                stringBuilder.AppendLine($"{MakeIndent(indent)}{nodeConnections} {clusterConnection};");
+                stringBuilder.AppendLine($"{MakeIndent(indent)}{entityConnections} {clusterConnection};");
             }
             
         }
         
         private static void AddSingleLayer(in StringBuilder stringBuilder, in Layer layer, int indent)
         {
-            foreach (var node in layer.GetNodesInLayer())
+            foreach (var entity in layer.GetEntitiesInLayer())
             {
-                stringBuilder.AppendLine($"{MakeIndent(indent)}\"{node.ID}\" [label=\"{node.Name}\" {MakePositionOrEmpty(node)}]");
+                stringBuilder.AppendLine($"{MakeIndent(indent)}\"{entity.ID}\" [label=\"{entity.Name}\" {MakePositionOrEmpty(entity)}]");
             }
 
             stringBuilder.AppendLine();
 
             foreach (var relation in layer.Relations)
             {
-                string nodeConnections = relation.Nodes.Select(node => node.ID.ToString())
+                string entitiesConnections = relation.Entities.Select(entity => entity.ID.ToString())
                     .Aggregate((s1, s2) => $"\"{s1}\" -- \"{s2}\"");
                 
-                stringBuilder.AppendLine($"{MakeIndent(indent)}{nodeConnections};");
+                stringBuilder.AppendLine($"{MakeIndent(indent)}{entitiesConnections};");
             }
             
         }

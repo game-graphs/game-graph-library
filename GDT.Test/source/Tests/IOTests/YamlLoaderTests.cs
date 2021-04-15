@@ -51,7 +51,7 @@ namespace GDT.Test.Tests.IOTests
             Graph graph = YamlGraphStorage.LoadGraph(content);
 
             Assert.AreEqual("LocationGraph", graph.Name, "Graph name not correct. Probably error in parser!");
-            Entity? kalimdor = graph.GetNode("Kalimdor");
+            Entity? kalimdor = graph.GetEntity("Kalimdor");
             Assert.NotNull(kalimdor, "Expected 'Kalimdor' to be in the node list!");
             Entity? orgrimmar = kalimdor?.GetChild("Orgrimmar");
             Assert.NotNull(orgrimmar, "Expected 'Orgrimmar' to be a child of Kalimdor!");
@@ -68,9 +68,9 @@ namespace GDT.Test.Tests.IOTests
             Assert.NotNull(zeppelin, "Expected 'Zeppelin Connections' to be a layer!");
             Relation? ogUCRelation = zeppelin?.GetRelation("OG-UC");
             Assert.NotNull(ogUCRelation, "Expected 'OG-UC' to be a relation in the Zeppelin Layer!");
-            Entity? orgrimmar = ogUCRelation?.GetNode("Orgrimmar");
+            Entity? orgrimmar = ogUCRelation?.GetEntity("Orgrimmar");
             Assert.NotNull(orgrimmar, "Expected Orgrimmar to be in the OG-UC relation");
-            Entity? uc = ogUCRelation?.GetNode("Undercity");
+            Entity? uc = ogUCRelation?.GetEntity("Undercity");
             Assert.NotNull(uc, "Expected Undercity to be in the OG-UC relation");
         }
         
@@ -80,7 +80,7 @@ namespace GDT.Test.Tests.IOTests
             string content = FileUtilities.LoadFile("graph_with_layers.yaml");
             Graph graph = YamlGraphStorage.LoadGraph(content);
             
-            Entity? stormwind = graph.GetNode("Stormwind");
+            Entity? stormwind = graph.GetEntity("Stormwind");
             Assert.NotNull(stormwind, "Expected to find 'Stormwind' in the graph");
 
             EntityComponent? cityComponent = stormwind?.GetComponent("City");

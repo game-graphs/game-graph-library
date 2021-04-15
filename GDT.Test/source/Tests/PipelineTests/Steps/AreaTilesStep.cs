@@ -25,7 +25,7 @@ namespace GDT.Tests.PipelineTests.Steps
 
             var newLayer = graph.GetOrAddLayer(_newLayerName);
 
-            foreach (var node in parentLayer.GetNodesInLayer())
+            foreach (var node in parentLayer.GetEntitiesInLayer())
             {
                 var neighbors = parentLayer.CountNeighbors(node);
 
